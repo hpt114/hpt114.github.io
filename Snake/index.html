@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="GBK">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇游戏</title>
+    <h1>贪吃蛇游戏</h1>
+    <audio id="buttonSound">
+  <source src="button.mp3" type="audio/mp3">
+    </audio>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+        .button {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 20px;
+        }
+        #pauseButton, #restartButton {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #pauseButton, #restartButton img {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        #scoreDisplay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            user-select: none;
+        }
+        /* 设置按钮样式 */
+        #settingsButton {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center; /* 垂直居中 */
+            justify-content: center; /* 水平居中 */
+            background-color: #f0f0f0;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        #settingsButton img {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        /* 设置面板样式 */
+        #settingsPanel {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 10px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 15px;
+        }
+        footer {
+            font-size: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 设置按钮 -->
+<button id="settingsButton" title="设置">
+    <img src="set.png" alt="设置图标" width="20" height="20">
+    <span>设置</span>
+</button>
+
+<!-- 设置面板 -->
+<div id="settingsPanel" style="display:none; position:absolute; top:40px; left:10px; background-color:white; border:1px solid black; padding:10px;">
+    <label for="snakeColorPicker">选择蛇的颜色:</label>
+    <input type="color" id="snakeColorPicker" value="#00FF00"><br><br>
+    
+    <!-- 音效开关 -->
+    <label>
+        <input type="checkbox" id="soundToggle" checked> 开启音效
+    </label><br><br>
+    
+    <button onclick="applySettings()">应用</button>
+</div>
+
+    <!-- 显示得分 -->
+    <div id="scoreDisplay" title="双击保存得分">得分: 0</div>
+
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+    <!-- 方向按钮 -->
+    <div class="controls">
+        <button id="up" class="button">↑</button><br/>
+        <button id="left" class="button">←</button>
+        <button id="down" class="button">↓</button>
+        <button id="right" class="button">→</button>
+    </div>
+
+    <!-- 暂停按钮 -->
+<button id="pauseButton" onclick="togglePause()">
+    <img src="pause1.png" alt="暂停图标" width="20" height="20">
+    <span>暂停</span>
+</button>
+
+<!-- 重新开始按钮 -->
+<button id="restartButton" onclick="restartGame()">
+    <img src="restart.png" alt="重新开始图标" width="20" height="20">
+    <span>重新开始</span>
+</button>
+    <script src="snake.js"></script>
+</body>
+<footer>
+  <p>
+    &copy; 2025 HPT114<br><a href=" https://b23.tv/mybeK3t" target="_blank" rel="noopener noreferrer">bilibili主页</a>
+    联系邮箱：<a href="mailto:hpt114@outlook.com">hpt114@outlook.com</a><br>
+  </p>
+</footer>
+</html>

@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "ArialMTProMedium";
+  src: url("/..ArialMTPro-Medium.otf") format("opentype"), 
+  url("ArialMTPro-Medium.otf") format("opentype"),
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #FFFFF7;
+  color: #000;
+  font-size: 16px;
+  font-family: "ArialMTProMedium", "Arial MT Pro Medium", "Regular";
+  text-align: center;
+  line-height: 1.25;
+}
+
+footer {
+  text-align: center;
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+img {
+  width: 50%;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+}
+
+a {
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #FFF;
+  margin: 0 auto;
+  padding: 1px;
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover{
+  color: #F00;
+  text-decoration: none;
+}
+
+table, th, td {
+  border: 1px solid #000;
+  border-radius: 16px;
+  background-color: #FFF;
+  color: #000;
+  border-collapse: collapse;
+}
+table {
+  width: 100%;
+}

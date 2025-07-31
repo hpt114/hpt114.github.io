@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="GBK">
+    <title>充值页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            display: inline-block;
+            text-align: left;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>您充值才可继续使用</h1>
+        <p>为了继续使用本程序，请先充值VIP、SVIP或SSVIP。</p>
+        <p>请选择充值套餐：</p>
+        <button onclick="selectPackage('1')">月度VIP - 仅需9.99元</button><br/>
+        <button onclick="selectPackage('2')">季度VIP - 仅需24.99元</button><br/>
+        <button onclick="selectPackage('3')">年度VIP - 仅需79.99元</button><br/>
+        <button onclick="selectPackage('4')">SVIP - 仅需299元</button><br/>
+        <button onclick="selectPackage('5')">SSVIP - 拥有定制服务，仅需999元</button>
+
+        <div id="paymentProcess" style="display:none;">
+            <p>请输入支付密码：<input type="password" id="password"></p>
+            <button onclick="processPayment()">确认支付</button>
+            <div id="result" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function selectPackage(choice) {
+            document.querySelector('.container').innerHTML = `
+                <h1>正在处理您的选择...</h1>
+                <p>请输入支付密码：<input type="password" id="password"></p>
+                <button onclick="processPayment('${choice}')">确认支付</button>
+                <div id="result" class="result"></div>
+            `;
+        }
+
+        function processPayment(choice) {
+            const resultDiv = document.getElementById('result');
+            setTimeout(() => {
+                let result = ['支付成功', '支付失败', '网络错误', '余额不足'][Math.floor(Math.random() * 4)];
+                resultDiv.textContent = `${result}`;
+                if (result === '支付成功') {
+                    resultDiv.innerHTML += "<br>您被骗了";
+                } else {
+                    resultDiv.innerHTML += "<br>请稍后重试。";
+                }
+            }, 2000); // 模拟延迟
+        }
+    </script>
+</body>
+</html>
